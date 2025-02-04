@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+
+  #show img, #show video{
+    height: 300px;
+    width: 267px;
+    border: 1px solid;
+    margin: 5px;
+  border-radius:100%;
+
+ }
+
+body {
+
+ font-family: Arial, sans-serif;
+ background-color: #f4f4f4;
+
+ }
+
+#main{
+
+  height: 500px;
+  width:300px;
+  border: 1px solid;
+  border-radius:20px;
+  padding: 10px 20px;
+  
+}
+
+h1{
+
+  text-align: center;
+}
+
+</style>
+<body>
+  <h1>Image  and video Gallery</h1>
+
+  <center>
+  <div id="main">
+    <label for="upld">
+  <div id="show"><img src="1.avif"></div></label>
+  
+  <input type="file" id="upld" multiple style="display: none;">
+  <button id="btn">Upload</button>
+
+</div>
+</center>
+
+  <script>
+
+    var show = document.getElementById("show");
+    var upld = document.getElementById("upld");
+    var btn = document.getElementById("btn");
+
+    btn.addEventListener("click", () => {
+      const files = upld.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileType = file.type;
+           show.innerHTML = ""; 
+
+        if (fileType.startsWith("image/")) {
+          
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          show.appendChild(img);
+          break; 
+
+        } 
+
+    
+      }
+      
+    });
+    
+  </script>
+</body>
+</html>
